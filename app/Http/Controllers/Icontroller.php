@@ -24,7 +24,7 @@ class Icontroller extends Controller
             ->count();
         if ($data > 0) {
             session()->put("user_session", $username);
-            return redirect('pagesummary');
+            return redirect('productsummary');
         } else {
             return back()->withErrors(['Invalid Credentials login not successfull']);
         }
@@ -316,5 +316,9 @@ class Icontroller extends Controller
             $data->save();
         }
         return redirect('login')->withErrors('Password changed successfully');
+    }
+    public function index()
+    {
+        return view('adminpannel/index');
     }
 }

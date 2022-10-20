@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 //returning views
-Route::get('login', function () {
-    return view('adminpannel/index');
-});
+Route::get('login', 'App\Http\Controllers\Icontroller@index');
 
 Route::get('pageadd', function () {
     return view('adminpannel/pageadd');
