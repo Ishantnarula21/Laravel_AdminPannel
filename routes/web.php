@@ -31,7 +31,7 @@ Route::get('delete_form/{id}', 'App\Http\Controllers\Icontroller@deleteform');
 Route::get('pageadd/{id}', 'App\Http\Controllers\Icontroller@editdata');
 
 //pagesummary update
-Route::post('form_update/{id}', 'App\Http\Controllers\Icontroller@updatedata');
+Route::post('pageupdate/{id}', 'App\Http\Controllers\Icontroller@updatedata');
 
 //pagesummary add
 Route::post('form_insert', 'App\Http\Controllers\Icontroller@insertdata');
@@ -76,7 +76,7 @@ Route::get('productdelete/{id}', 'App\Http\Controllers\Icontroller@productdelete
 Route::get('productadd/{id}', 'App\Http\Controllers\Icontroller@productedit');
 
 //products insert
-Route::post('productinsert', 'App\Http\Controllers\Icontroller@productinsert');
+Route::post('pinsert', 'App\Http\Controllers\Icontroller@productinsert');
 
 //product update
 Route::post('productupdate/{id}', 'App\Http\Controllers\Icontroller@productupdate');

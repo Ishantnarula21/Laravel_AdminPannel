@@ -99,7 +99,7 @@
                                     </table>
                                 </form>
                             @else
-                                <form method="post" enctype="multipart/form-data" action="{{ url('productinsert') }}">
+                                <form method="post" enctype="multipart/form-data" action="{{ url('pinsert') }}">
                                     {{ csrf_field() }}
                                     <table class="addpage-table">
                                         <tr>

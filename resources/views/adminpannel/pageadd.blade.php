@@ -43,7 +43,7 @@
                             Add Page</div>
                         <div>
                             @if (isset($data))
-                                <form action="{{ url('productupdate/' . $data[0]->id) }}" method="post">
+                                <form action="{{ url('pageupdate/' . $data[0]->id) }}" method="post">
                                     {{ csrf_field() }}
                                     <table class="addpage-table">
                                         <tr>
