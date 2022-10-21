@@ -246,23 +246,29 @@ class Icontroller extends Controller
         $this->validate($request, $rules, $customMessages);
 
         $data = productsummary::find($id);
-        if ($request->isMethod('post')) {
-            $data->category_id = $request->get('catname');
-            $data->pname = $request->get('pname');
-            $data->pdescription = $request->get('pdescription');
-            $data->pprice = $request->get('pprice');
+        $image = $data->pimage;
+        $filepath = "upload/" . $image;
+        if (File::exists(public_path($filepath))) {
+            File::delete(public_path($filepath));
+            $data->delete();
+            if ($request->isMethod('post')) {
+                $data->category_id = $request->get('catname');
+                $data->pname = $request->get('pname');
+                $data->pdescription = $request->get('pdescription');
+                $data->pprice = $request->get('pprice');
 
-            if (!empty($request->file('pimage'))) {
-                $file = $request->file('pimage');
-                $current = uniqid(Carbon::now()->format('YmdHs'));
-                $file->getClientOriginalName();
-                $file->getClientOriginalExtension();
-                $fullfilename = $current . "." . $file->getClientOriginalExtension();
-                $filepath = public_path('upload');
-                $file->move($filepath, $fullfilename);
-                $data->pimage = $fullfilename;
+                if (!empty($request->file('pimage'))) {
+                    $file = $request->file('pimage');
+                    $current = uniqid(Carbon::now()->format('YmdHs'));
+                    $file->getClientOriginalName();
+                    $file->getClientOriginalExtension();
+                    $fullfilename = $current . "." . $file->getClientOriginalExtension();
+                    $filepath = public_path('upload');
+                    $file->move($filepath, $fullfilename);
+                    $data->pimage = $fullfilename;
+                }
+                $data->save();
             }
-            $data->save();
         }
         return redirect('productsummary')->with('message', 'Inserted successfully');
     }
